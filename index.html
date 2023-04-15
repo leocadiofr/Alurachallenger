@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=devi-width">
+  <title>Encryption Leocadio</title>
+
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+  <header>
+    <div>
+
+      <h1 class="texto-cabeçalho">Challenger Alura - Iniciante em programação - T5 ONE</h1>
+
+      <img class="imagem_cabeçalho" src="img-cabeçalho.png">
+
+    </div>
+  </header>
+
+  <main>
+    <div class="caixa-de-texto">
+      <textarea id="entrada" placeholder="Digite seu texto aqui, sem maiúscula ou acentos" onkeyup="this.value = this.value.toLowerCase().replace(/[^\w\s]/gi, '');"></textarea>
+
+      <img class="chaves" src="input-output.png">
+
+
+      <textarea id="saida" placeholder="Resultado" readonly></textarea>
+    </div>
+
+    <button id="btn-criptografar">Criptografar</button>
+    <button id="btn-descriptografar">Descriptografar</button>
+    <button id="btn-copiar">Copiar</button>
+  </main>
+
+  <footer>
+    <div class="rodape" >
+      <img class="alura_logo" src="alura_logo.png">
+      <p id="texto-rodape">Desenvolvido por Leocadio Rodrigues</p>
+      <img class=locker_logo src="locker.png">
+    </div>
+  </footer>
+
+  <script>
+    const criptografar = (texto) => {
+      return texto
+        .replace(/e/g, 'enter')
+        .replace(/i/g, 'imes')
+        .replace(/a/g, 'ai')
+        .replace(/o/g, 'ober')
+        .replace(/u/g, 'ufat');
+    };
+
+    const descriptografar = (texto) => {
+      return texto
+        .replace(/enter/g, 'e')
+        .replace(/imes/g, 'i')
+        .replace(/ai/g, 'a')
+        .replace(/ober/g, 'o')
+        .replace(/ufat/g, 'u');
+    };
+
+    const btnCriptografar = document.querySelector('#btn-criptografar');
+    const btnDescriptografar = document.querySelector('#btn-descriptografar');
+    const btnCopiar = document.querySelector('#btn-copiar');
+    const entrada = document.querySelector('#entrada');
+    const saida = document.querySelector('#saida');
+
+    const copiarParaAreaDeTransferencia = () => {
+      saida.select();
+      document.execCommand('copy');
+    };
+
+    btnCriptografar.addEventListener('click', () => {
+      saida.value = criptografar(entrada.value.toLowerCase());
+    });
+
+    btnDescriptografar.addEventListener('click', () => {
+      saida.value = descriptografar(entrada.value.toLowerCase());
+    });
+
+    btnCopiar.addEventListener('click', () => {
+      copiarParaAreaDeTransferencia();
+    });
+
+  </script>
+
+</body>
+
+</html>
+
